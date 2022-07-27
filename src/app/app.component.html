@@ -1,0 +1,32 @@
+<div class="container">
+  <!--main-->
+  <div class="main">
+    <table class="music_list">
+      <tr>
+        <th>Artist Name</th>
+        <th>Album Name</th>
+        <th>Year Released</th>
+        <th>Song Track #</th>
+        <th>Song Name</th>
+      </tr>
+      <tr *ngFor="let song of artist_songs | paginate
+      : {
+          itemsPerPage: tableSize,
+          currentPage: page,
+          totalItems: count
+        };
+        let i = index">
+        <td>{{song.artist.name}}</td>
+        <td>{{song.album.name}}</td>
+        <td>{{song.album.year_released}}</td>
+        <td>{{song.track}}</td>
+        <td>{{song.name}}</td>
+      </tr>
+    </table>
+    <div class="pagination">
+      <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+      </pagination-controls>
+    </div>
+  </div>
+  
+</div>
